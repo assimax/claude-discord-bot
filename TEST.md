@@ -1,4 +1,4 @@
-﻿# Claude Discord Bot Test Script
+# Claude Discord Bot Test Script
 
 Dieses Script prüft ob alle notwendigen Dateien vorhanden sind.
 
