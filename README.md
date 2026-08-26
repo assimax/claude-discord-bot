@@ -1,4 +1,4 @@
-﻿# Claude Discord Bot & Backend
+# Claude Discord Bot & Backend
 
 Ein vollständiges Claude AI Discord Bot System mit separatem Backend für Railway Deployment.
 
@@ -47,9 +47,9 @@ Dieses Projekt ist für Railway Deployment mit zwei separaten Services konfiguri
 
 2. **Auf Railway deployen**
    - Auf railway.app anmelden
-   - "New Project" → "Deploy from GitHub repo"
-   - Repository auswählen
-   - Railway erkennt automatisch die zwei Services
+   - Zwei Services aus demselben GitHub-Repository erstellen
+   - Beim Backend-Service als Root Directory `/backend` setzen
+   - Beim Bot-Service als Root Directory `/discord-bot` setzen
 
 3. **Environment Variables setzen**
    - In Railway Project Settings:
@@ -119,7 +119,7 @@ Der Bot verfügt über:
 - Timeout Management (60 Sekunden)
 
 ### Bot Commands:
-Der Bot reagiert auf Commands basierend auf der `prefix` Einstellung (default: `!`)
+Der Bot reagiert auf Commands basierend auf der `prefix` Einstellung (derzeit: `&`), zum Beispiel `&claude Hallo`.
 
 ## 🔐 Environment Variables
 
