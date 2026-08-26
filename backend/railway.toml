@@ -1,0 +1,8 @@
+﻿[build]
+builder = "nixpacks"
+buildCommand = "npm install"
+startCommand = "npm start"
+
+[deploy]
+healthCheckPath = "/health"
+healthCheckTimeout = 30
