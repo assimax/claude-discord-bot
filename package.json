@@ -1,0 +1,17 @@
+﻿{
+  "name": "claude-discord-bot",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "backend",
+    "discord-bot"
+  ],
+  "scripts": {
+    "dev:backend": "cd backend && npm run dev",
+    "dev:bot": "cd discord-bot && npm run start",
+    "build": "npm run build --workspaces",
+    "install:all": "npm install --workspaces"
+  },
+  "author": "",
+  "license": "MIT"
+}
