@@ -6,9 +6,19 @@ const { Anthropic } = require('@anthropic-ai/sdk');
 const app = express();
 const port = process.env.PORT || 3000;
 
+const anthropicApiKey = process.env.ANTHROPIC_API_KEY;
+const anthropicBaseUrl = process.env.ANTHROPIC_BASE_URL;
+const anthropicModel = process.env.ANTHROPIC_MODEL || 'claude-sonnet-4-20250514';
+
+if (!anthropicApiKey) {
+    console.error('ANTHROPIC_API_KEY environment variable is not set!');
+    process.exit(1);
+}
+
 // Initialize Claude API client
 const anthropic = new Anthropic({
-    apiKey: process.env.ANTHROPIC_API_KEY,
+    apiKey: anthropicApiKey,
+    ...(anthropicBaseUrl ? { baseURL: anthropicBaseUrl } : {}),
 });
 
 // Middleware
@@ -58,7 +68,7 @@ app.post('/api/chat', async (req, res) => {
 
         // Call Claude API
         const response = await anthropic.messages.create({
-            model: 'claude-3-5-sonnet-20241022',
+            model: anthropicModel,
             max_tokens: 4096,
             messages: messages,
             temperature: 0.7,
