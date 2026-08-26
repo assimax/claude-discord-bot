@@ -14,21 +14,25 @@ module.exports = {
 
     mod: async function (DBS, message, action, args, command, index) {
         try {
-            // Channel ID Prüfung aus Environment Variable oder default
-            const ALLOWED_CHANNEL_ID = process.env.ALLOWED_CHANNEL_ID || "1339905645490475018";
+            // Channel ID und Backend URL aus Environment Variables
+            const ALLOWED_CHANNEL_ID = process.env.ALLOWED_CHANNEL_ID;
+            const BACKEND_URL = process.env.BACKEND_URL?.replace(/\/$/, '');
 
-            // Backend URL aus Environment Variable
-            const BACKEND_URL = process.env.BACKEND_URL;
-
-            if (!BACKEND_URL) {
-                console.error("BACKEND_URL environment variable is not set!");
-                await message.channel.send("❌ Backend-Konfiguration fehlt. Bitte BACKEND_URL in den Environment Variables setzen.");
+            if (!ALLOWED_CHANNEL_ID) {
+                console.error("ALLOWED_CHANNEL_ID environment variable is not set!");
                 DBS.callNextAction(command, message, args, index + 1);
                 return;
             }
 
             if (message.channel.id !== ALLOWED_CHANNEL_ID) {
                 // Nicht erlaubter Channel - ignorieren
+                DBS.callNextAction(command, message, args, index + 1);
+                return;
+            }
+
+            if (!BACKEND_URL) {
+                console.error("BACKEND_URL environment variable is not set!");
+                await message.channel.send("❌ Backend-Konfiguration fehlt. Bitte BACKEND_URL in den Environment Variables setzen.");
                 DBS.callNextAction(command, message, args, index + 1);
                 return;
             }
