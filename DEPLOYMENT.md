@@ -1,4 +1,4 @@
-﻿# 🚀 Railway Deployment Guide
+# 🚀 Railway Deployment Guide
 
 Diese Anleitung beschreibt das Deployment des Claude Discord Bot Systems auf Railway.
 
@@ -26,9 +26,10 @@ git push -u origin main
 ### 2. Railway Project erstellen
 
 1. Auf [railway.app](https://railway.app) anmelden
-2. "New Project" → "Deploy from GitHub repo"
-3. Repository auswählen
-4. Railway erkennt automatisch die zwei Services (backend und discord-bot)
+2. Ein Projekt erstellen und das GitHub-Repository verbinden
+3. Zwei Services aus demselben Repository anlegen
+4. Beim Backend-Service unter Settings als Root Directory `/backend` setzen
+5. Beim Discord-Bot-Service als Root Directory `/discord-bot` setzen
 
 ### 3. Environment Variables konfigurieren
 
