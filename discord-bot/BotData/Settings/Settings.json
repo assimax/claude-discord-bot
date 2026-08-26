@@ -53,5 +53,5 @@
   ],
   "token": "YOUR_DISCORD_TOKEN_HERE",
   "clientid": "",
-  "prefix": "!"
+  "prefix": "&"
 }
