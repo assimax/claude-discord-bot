@@ -1,4 +1,4 @@
-﻿# 🎉 Claude Discord Bot Repository - Fertiggestellt!
+# 🎉 Claude Discord Bot Repository - Fertiggestellt!
 
 ## ✅ **Vollständige Repository-Struktur**
 
