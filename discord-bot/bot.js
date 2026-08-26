@@ -42,6 +42,7 @@ DBS.Bot = new Discord.Client({
     Discord.Intents.FLAGS.GUILD_VOICE_STATES,
     Discord.Intents.FLAGS.GUILD_MESSAGES,
     Discord.Intents.FLAGS.GUILD_MESSAGE_TYPING,
+    Discord.Intents.FLAGS.MESSAGE_CONTENT,
   ],
 });
 
@@ -106,6 +107,7 @@ DBS.checkMessage = async function (message) {
       DBS.antiSpam.message(message);
     }
 
+    if (process.env.ALLOWED_CHANNEL_ID && message.channel.id !== process.env.ALLOWED_CHANNEL_ID) return;
     if (!message.content.startsWith(prefix)) return;
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const command = args.shift();
@@ -188,10 +190,9 @@ DBS.callNextEventAction = async function (type, varsE, index) {
 };
 
 DBS.startBot = async function () {
-  // Use environment variable token if available, otherwise fallback to settings
-  const discordToken = process.env.DISCORD_TOKEN || DBS.SettingsFile.token;
+  const discordToken = process.env.DISCORD_TOKEN;
 
-  if (!discordToken || discordToken === "YOUR_DISCORD_TOKEN_HERE") {
+  if (!discordToken) {
     console.error("DISCORD_TOKEN environment variable is not set!");
     DBS.logError({
       level: "error",
