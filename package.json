@@ -1,5 +1,5 @@
-﻿{
-  "name": "claude-discord-bot",
+{
+  "name": "claude-discord-bot-monorepo",
   "version": "1.0.0",
   "private": true,
   "workspaces": [
@@ -7,11 +7,14 @@
     "discord-bot"
   ],
   "scripts": {
-    "dev:backend": "cd backend && npm run dev",
-    "dev:bot": "cd discord-bot && npm run start",
-    "build": "npm run build --workspaces",
-    "install:all": "npm install --workspaces"
+    "start:backend": "npm start --workspace=backend",
+    "start:bot": "npm start --workspace=discord-bot",
+    "dev:backend": "npm run dev --workspace=backend",
+    "dev:bot": "npm run dev --workspace=discord-bot",
+    "build": "npm install --workspaces"
   },
-  "author": "",
+  "engines": {
+    "node": ">=20 <27"
+  },
   "license": "MIT"
 }
